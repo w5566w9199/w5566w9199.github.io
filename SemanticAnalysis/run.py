@@ -18,12 +18,12 @@ while bot_message != "再見" or bot_message != "結束":
             print("Your said :{}".format(message))
         except:
             print("無法辨識")
-    
+
     if len(message) == 0:
         continue
     print("Wait...")
 
-    r = requests.post('http://localhost:5002/webhooks/rest/webhook', json={"message": message})
+    r = requests.post('http://localhost:5002/api', json={"message": message})
 
     print("Output： ",end='')
     for i in r.json():
@@ -34,8 +34,3 @@ while bot_message != "再見" or bot_message != "結束":
     myobj.save("speak.mp3")
     mixer.music.load("speak.mp3")
     mixer.music.play()
-
-
-
-
-    
