@@ -20,8 +20,8 @@
     /** 語音識別 */
     const speechRecognition = new webkitSpeechRecognition();
 
-    /** API網址 */
-    const apiUrl = ('http://itri.dasgo.com.tw:5002/webhooks/rest/webhook');
+    /** API網址  http://itri.dasgo.com.tw:5002/webhooks/rest/webhook */
+    const apiUrl = ('http://localhost:5055/webhook');
 
     speechRecognition.continuous = false;
     speechRecognition.lang = 'cmn-Hant-TW';
@@ -151,4 +151,3 @@
         });
     }
 }();
-
