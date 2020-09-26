@@ -1,0 +1,58 @@
+intents:
+  - ask_sender
+  - ask_cusOwner
+  - ask_custNum
+  - ask_posCode
+  - input_cusOrder
+  - input_phone
+  - input_addr
+  - out_of_scope
+
+slots:
+  address:
+    type: text
+  requested_slot:
+    type: unfeaturized
+  cusOrder:
+    type: unfeaturized
+    auto_fill: False
+  phone:
+    type: unfeaturized
+
+entites:
+  - cusOrder
+  - phone
+  - address
+
+forms:
+  - cusOrder_sender
+  - cusOrder_cusOwner
+  - phone_fill
+
+actions:
+  - reply_data_sender
+  - reply_data_cusOwner
+  - reply_custNum_phone
+  - reply_custNum_addr
+  - reply_posCode
+  - action_default_fallback
+
+responses:
+  utter_ask_cusOrder:
+  - text: "請輸入客戶單號"
+  utter_ask_phone:
+  - text: "請輸入電話號碼"   
+  utter_ask_target:
+  - text: "請問要查收件人還是寄件人?"
+  utter_custNum:
+  - text: "請輸入電話或地址"  
+  utter_posCode:
+  - text: "請給我查詢地址"
+  utter_ask_path:
+  - text: "請問要查客戶單號還是郵遞區號?"
+
+
+
+session_config:
+  session_expiration_time: 10
+  carry_over_slots_to_new_session: true

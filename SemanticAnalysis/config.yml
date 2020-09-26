@@ -1,0 +1,37 @@
+# Configuration for Rasa NLU.
+# https://rasa.com/docs/rasa/nlu/components/
+language: zh
+pipeline:
+  - name: JiebaTokenizer
+    intent_tkenization_flag: true
+    intent_split_symbol: "+"
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: "char_wb"
+    min_ngram: 1
+    max_ngram: 4 
+  - name: DIETClassifier
+  # 正則表達式
+  - name: "RegexFeaturizer"
+  - name: EntitySynonymMapper
+
+
+
+# Configuration for Rasa Core.
+# https://rasa.com/docs/rasa/core/policies/
+policies:
+  - name: MemoizationPolicy
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 100
+  - name: MappingPolicy
+  - name: "FallbackPolicy"
+    # nlu預測(intent預測)最低值調整
+    nlu_threshold: 0.4
+    # 模糊度調整(意圖預測最高與第二高值相差)
+    ambiguity_threshold: 0.1
+    # Rasa Core動作預測最低值調整
+    core_threshold: 0.3
+    fallback_action_name: "action_default_fallback"
+  - name: "FormPolicy"
