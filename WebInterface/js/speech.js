@@ -22,7 +22,6 @@
 
     /** API網址  http://itri.dasgo.com.tw:5002/webhooks/rest/webhook */
     const apiUrl = ('https://5590478d63a7.ngrok.io');
-    Response.AddHeader("Access-Control-Allow-Origin", "*")
     speechRecognition.continuous = false;
     speechRecognition.lang = 'cmn-Hant-TW';
     microphoneButtonImage.style.pointerEvents = 'none';
