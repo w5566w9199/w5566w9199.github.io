@@ -84,7 +84,9 @@
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                 'Access-Control-Allow-Origin':'https://5590478d63a7.ngrok.io'
             },
+
             body: JSON.stringify({
                 sender: 'user',
                 message: messageText,
