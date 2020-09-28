@@ -21,7 +21,9 @@
     const speechRecognition = new webkitSpeechRecognition();
 
     /** API網址  http://itri.dasgo.com.tw:5002/webhooks/rest/webhook */
-    const apiUrl = ('https://5590478d63a7.ngrok.io');
+    const apiUrl = ('https://cors-anywhere.herokuapp.com/ https://localhost:5005');
+
+
     speechRecognition.continuous = false;
     speechRecognition.lang = 'cmn-Hant-TW';
     microphoneButtonImage.style.pointerEvents = 'none';
@@ -30,7 +32,7 @@
         appendMessageDivInMessagesDiv(messageText);
         messagesDivContainer.scrollTop = messagesDivContainer.scrollHeight;
 
-        try {
+        // try {
             const response = await whenApiRequestGotResponse(messageText);
             const apiMessages = await response.json();
 
@@ -39,9 +41,9 @@
             }
 
             messagesDivContainer.scrollTop = messagesDivContainer.scrollHeight;
-        } catch (error) {
-            console.log(error);
-        }
+        // } catch (error) {
+        //     console.log(error);
+        // }
     }
 
     /** 疊代當得到訊息文字 */
@@ -76,13 +78,16 @@
             innerText: messageText,
         });
     }
-
+    // var xmlhttp = new XMLHttpRequest()
+    // xmlhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest");
     /** 當API請求得到回應 */
     function whenApiRequestGotResponse(messageText) {
         return fetch(apiUrl, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/json',
+                 'content-type' : 'application/x-www-form-urlencoded'
+                // 'Accept': 'application/json'
                 // 'Access-Control-Allow-Origin':'*'
             },
 

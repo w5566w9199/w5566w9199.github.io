@@ -23,7 +23,7 @@ while bot_message != "再見" or bot_message != "結束":
         continue
     print("Wait...")
 
-    r = requests.post('https://5590478d63a7.ngrok.io', json={"message": message})
+    r = requests.post(' http://localhost:5005', json={"message": message})
 
     print("Output： ",end='')
     for i in r.json():
