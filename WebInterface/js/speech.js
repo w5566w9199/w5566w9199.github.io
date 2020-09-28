@@ -21,7 +21,7 @@
     const speechRecognition = new webkitSpeechRecognition();
 
     /** API網址  http://itri.dasgo.com.tw:5002/webhooks/rest/webhook */
-    const apiUrl = ('https://cors-anywhere.herokuapp.com/ https://localhost:5005');
+    const apiUrl = ('https://cors-anywhere.herokuapp.com/https://fbc1a507f55e.ngrok.io/webhooks/rest/webhook');
 
 
     speechRecognition.continuous = false;
@@ -32,7 +32,7 @@
         appendMessageDivInMessagesDiv(messageText);
         messagesDivContainer.scrollTop = messagesDivContainer.scrollHeight;
 
-        // try {
+        try {
             const response = await whenApiRequestGotResponse(messageText);
             const apiMessages = await response.json();
 
@@ -41,9 +41,9 @@
             }
 
             messagesDivContainer.scrollTop = messagesDivContainer.scrollHeight;
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     /** 疊代當得到訊息文字 */
@@ -85,9 +85,9 @@
         return fetch(apiUrl, {
             method: 'POST',
             headers: {
-                // 'Content-Type': 'application/json',
-                 'content-type' : 'application/x-www-form-urlencoded'
-                // 'Accept': 'application/json'
+                'Content-Type': 'application/json',
+                 // 'content-type' : 'application/x-www-form-urlencoded'
+                'Accept': 'application/json'
                 // 'Access-Control-Allow-Origin':'*'
             },
 
