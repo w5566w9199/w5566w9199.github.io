@@ -133,7 +133,7 @@ function createDownloadLink(blob) {
 	link.href = url;
 	link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
 	link.innerHTML = "Save to disk";
-	alert(link.download);
+
 	//add the new audio element to li
 	li.appendChild(au);
 
@@ -143,6 +143,22 @@ function createDownloadLink(blob) {
 	//add the save to disk link to li
 	li.appendChild(link);
 
+
+	var reader = new FileReader();
+	reader.onload = function(e){
+			// target.result 该属性表示目标对象的DataURL
+			console.log(e.target.result);
+	}
+	// 传入一个参数对象即可得到基于该参数对象的文本内容
+	function blobToFile(theBlob, fileName){
+	    //A Blob() is almost a File() - it's just missing the two properties below which we will add
+	    theBlob.lastModifiedDate = new Date();
+	    theBlob.name = fileName;
+	    return theBlob;
+	}
+
+  var a = blobToFile(url, link.download);
+	alert(a)
 	//upload link
 	// var upload = document.createElement('a');
 	// upload.href="#";
