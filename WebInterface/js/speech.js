@@ -21,7 +21,7 @@
     const speechRecognition = new webkitSpeechRecognition();
 
     /** API網址  http://itri.dasgo.com.tw:5002/webhooks/rest/webhook */
-    const apiUrl = ('https://cors-anywhere.herokuapp.com/https://fbc1a507f55e.ngrok.io/webhooks/rest/webhook');
+    const apiUrl = ('https://cors-anywhere.herokuapp.com/https://adf3adc12797.ngrok.io/webhooks/rest/webhook');
 
 
     speechRecognition.continuous = false;

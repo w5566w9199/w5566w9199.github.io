@@ -149,16 +149,10 @@ function createDownloadLink(blob) {
 			// target.result 该属性表示目标对象的DataURL
 			console.log(e.target.result);
 	}
-	// 传入一个参数对象即可得到基于该参数对象的文本内容
-	function blobToFile(theBlob, fileName){
-	    //A Blob() is almost a File() - it's just missing the two properties below which we will add
-	    theBlob.lastModifiedDate = new Date();
-	    theBlob.name = fileName;
-	    return theBlob;
-	}
+  // alert(link.download);
 
-  var a = blobToFile(url, link.download);
-	alert(a)
+	alert(link.download);
+	alert(link);
 	//upload link
 	// var upload = document.createElement('a');
 	// upload.href="#";

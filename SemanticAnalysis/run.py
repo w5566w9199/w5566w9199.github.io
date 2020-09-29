@@ -23,7 +23,7 @@ while bot_message != "再見" or bot_message != "結束":
         continue
     print("Wait...")
 
-    r = requests.post('https://cors-anywhere.herokuapp.com/https://fbc1a507f55e.ngrok.io/webhooks/rest/webhook', json={"message": message})
+    r = requests.post('https://cors-anywhere.herokuapp.com/https://adf3adc12797.ngrok.io/webhooks/rest/webhook', json={"message": message})
 
     print("Output： ",end='')
     for i in r.json():
