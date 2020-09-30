@@ -23,6 +23,14 @@ while bot_message != "再見" or bot_message != "結束":
         continue
     print("Wait...")
 
+    with sr.WavFile("test.wav") as source:              # use "test.wav" as the audio source
+        audio = r.record(source)                        # extract audio data from the file
+
+    try:
+        print("Transcription: " + r.recognize(audio))   # recognize speech using Google Speech Recognition
+    except LookupError:                                 # speech is unintelligible
+        print("Could not understand audio")
+
     r = requests.post('https://cors-anywhere.herokuapp.com/https://adf3adc12797.ngrok.io/webhooks/rest/webhook', json={"message": message})
 
     print("Output： ",end='')

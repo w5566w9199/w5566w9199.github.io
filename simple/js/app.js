@@ -150,8 +150,15 @@ function createDownloadLink(blob) {
 			console.log(e.target.result);
 	}
   // alert(link.download);
+	function getRootPath(){
+	var curPageUrl = window.document.location.href;
+	var rootPath = curPageUrl.split("//")[0];
+	curPageUrl.split("//")[1].split("/")[0];
+	curPageUrl.split("//")[1].split("/")[1];
+	return rootPath;
+	}
 
-	alert(link.download);
+	alert(getRootPath()+link.download);
 	alert(link);
 	//upload link
 	// var upload = document.createElement('a');

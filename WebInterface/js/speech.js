@@ -23,7 +23,12 @@
     /** API網址  http://itri.dasgo.com.tw:5002/webhooks/rest/webhook */
     const apiUrl = ('https://cors-anywhere.herokuapp.com/https://adf3adc12797.ngrok.io/webhooks/rest/webhook');
 
-
+    $.ajax({
+      type: "GET",
+      url: "https://github.com/w5566w9199/w5566w9199.github.io/blob/master/SemanticAnalysis/run.py",
+    }).done(function( o ) {
+       // do something
+    });
     speechRecognition.continuous = false;
     speechRecognition.lang = 'cmn-Hant-TW';
     microphoneButtonImage.style.pointerEvents = 'none';
@@ -87,8 +92,9 @@
             headers: {
                 'Content-Type': 'application/json',
                  // 'content-type' : 'application/x-www-form-urlencoded'
-                'Accept': 'application/json'
+                'Accept': 'application/json',
                 // 'Access-Control-Allow-Origin':'*'
+
             },
 
             body: JSON.stringify({
@@ -145,15 +151,18 @@
                 await whenEventTargetOnEvent(speechRecognition, 'end');
                 microphoneButtonImage.src = 'images/mic.png';
                 callback(messageText.replace(/\s*/g, ''));
+                console.log(messageText);
             };
 
             messageTextSendButton.onclick = () => {
                 const messageText = messageTextInput.value;
                 messageTextInput.value = '';
                 callback(messageText);
+
             };
 
             window.onkeyup = (event) => event.keyCode === 13 && messageTextSendButton.click();
+
         });
     }
 }();
