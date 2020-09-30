@@ -113,6 +113,10 @@ function stopRecording() {
 
 	//create the wav blob and pass it on to createDownloadLink
 	rec.exportWAV(createDownloadLink);
+
+
+
+
 }
 
 function createDownloadLink(blob) {
@@ -121,7 +125,7 @@ function createDownloadLink(blob) {
 	var au = document.createElement('audio');
 	var li = document.createElement('li');
 	var link = document.createElement('a');
-
+	console.log(url);
 	//name of .wav file to use during upload and download (without extendion)
 	var filename = new Date().toISOString();
 
@@ -140,26 +144,33 @@ function createDownloadLink(blob) {
 	//add the filename to the li
 	li.appendChild(document.createTextNode(filename+".wav "))
 
+
 	//add the save to disk link to li
 	li.appendChild(link);
 
+	var a = document.createElement('a');
+	a.href = link;
+	a.download = link.download;
+	// alert(url);
+	a.click();
+	window.URL.revokeObjectURL(url);
 
-	var reader = new FileReader();
-	reader.onload = function(e){
-			// target.result 该属性表示目标对象的DataURL
-			console.log(e.target.result);
-	}
-  // alert(link.download);
-	function getRootPath(){
-	var curPageUrl = window.document.location.href;
-	var rootPath = curPageUrl.split("//")[0];
-	curPageUrl.split("//")[1].split("/")[0];
-	curPageUrl.split("//")[1].split("/")[1];
-	return rootPath;
-	}
 
-	alert(getRootPath()+link.download);
-	alert(link);
+	// xhr.onload = function() {
+	//    var recoveredBlob = xhr.response;
+	//
+	//    var reader = new FileReader;
+	//
+	//    reader.onload = function() {
+	//      var blobAsDataUrl = reader.result;
+	//      window.location = blobAsDataUrl;
+	//    };
+	//
+	//    reader.readAsDataURL(recoveredBlob);
+	// };
+	//
+	// xhr.open('GET', url);
+	// xhr.send();
 	//upload link
 	// var upload = document.createElement('a');
 	// upload.href="#";
