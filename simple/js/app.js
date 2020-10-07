@@ -148,14 +148,32 @@ function createDownloadLink(blob) {
 	//add the save to disk link to li
 	li.appendChild(link);
 
+	// var a = document.createElement('a');
+	// a.href = link;
+	// a.download = 'speak.wav';
+	// // alert(url);
+	// a.click();
+	// window.URL.revokeObjectURL(url);
 	var a = document.createElement('a');
-	a.href = link;
-	a.download = link.download;
-	// alert(url);
-	a.click();
-	window.URL.revokeObjectURL(url);
-
-
+	console.log(link);
+	fetch(link).then(res => res.blob().then(blob => {
+	    var url = window.URL.createObjectURL(blob);
+	    var filename = 'speak.wav';
+	    a.href = url;
+	    a.download = filename;
+	    // a.click();
+	    // window.URL.revokeObjectURL(url);
+	}))
+$.ajax({
+	        url: "https://github.com/w5566w9199/w5566w9199.github.io/tree/master/simple",   //後端的URL
+	        type: "POST",   //用POST的方式
+	        dataType: "text",   //response的資料格式
+	        cache: false,   //是否暫存
+	        data: a.download, //傳送給後端的資料
+	        success: function(response) {
+	            console.log(response);  //成功後回傳的資料
+	        }
+	    });
 	// xhr.onload = function() {
 	//    var recoveredBlob = xhr.response;
 	//
