@@ -22,7 +22,7 @@
 
     /** API網址  http://itri.dasgo.com.tw:5002/webhooks/rest/webhook */
     const apiUrl = ('https://cors-anywhere.herokuapp.com/https://d2cb82488a76.ngrok.io/webhooks/rest/webhook');
-
+    /*654654*/
     $.ajax({
       type: "GET",
       url: "https://github.com/w5566w9199/w5566w9199.github.io/blob/master/SemanticAnalysis/run.py",
