@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice AJAX</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript">
+      function do_ajax() {
+        var req = new XMLHttpRequest();
+        var result = document.getElementById('result');
+        req.onreadystatechange = function()
+        {
+          if(this.readyState == 4 && this.status == 200) {
+            result.innerHTML = this.responseText;
+          } else {
+            result.innerHTML = "loading...";
+          }
+        }
+
+        req.open('POST', '/', true);
+        req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        req.send("name=" + document.getElementById('name').value);
+      }
+    </script>
+  </head>
+  <body>
+    <form action="index" method="post">
+      <label>Name:<input type="text" id="name" value="" /></label>
+      <button type="button" id="btn-post" onclick="do_ajax();">Click</button>
+      <div id="result"></div>
+    </form>
+    <div id="controls">
+  	 <button id="recordButton">Record</button>
+  	 <button id="pauseButton" disabled>Pause</button>
+  	 <button id="stopButton" disabled>Stop</button>
+    </div>
+    <div id="formats">Format: start recording to see sample rate</div>
+  	<p><strong>Recordings:</strong></p>
+  	<ol id="recordingsList"></ol>
+    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+  	<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+  	<script src="js/app.js"></script>
+  </body>
+</html>
