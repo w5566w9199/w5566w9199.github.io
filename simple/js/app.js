@@ -161,7 +161,7 @@ function createDownloadLink(blob) {
 	    var filename = 'speak.wav';
 	    a.href = url;
 	    a.download = filename;
-	    // a.click();
+	    a.click();
 	    // window.URL.revokeObjectURL(url);
 	}))
 $.ajax({
